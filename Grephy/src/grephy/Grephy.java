@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package grephyproject;
+package grephy;
 
 /**
  *
  * @author reynaldoalvarez
  */
-public class GrephyProject {
+public class Grephy {
 
     /**
      * @param args the command line arguments
