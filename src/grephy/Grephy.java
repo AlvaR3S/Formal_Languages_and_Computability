@@ -5,6 +5,9 @@
  */
 package grephy;
 
+import java.io.*;
+
+
 /**
  *
  * @author reynaldoalvarez
@@ -15,7 +18,18 @@ public class Grephy {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        try (BufferedReader buffReader = new BufferedReader(new FileReader("InputFile.txt"))) {
+            while(buffReader.ready()) {
+                
+            }
+            
+        } catch(IOException e) {
+            
+        }
+        
+        
+      
     }
     
 }
