@@ -19,13 +19,12 @@ public class Grephy {
      */
     public static void main(String[] args) {
         
-        try (BufferedReader buffReader = new BufferedReader(new FileReader("InputFile.txt"))) {
-            while(buffReader.ready()) {
-                
+        try (BufferedReader buffReader = new BufferedReader(new FileReader("InputFile.txt"))) { // Create the bufferedReader and take in an txt file
+            while(buffReader.ready()) { // While there is still input left
+                System.out.println(buffReader.readLine());
             }
-            
         } catch(IOException e) {
-            
+            System.out.println("Could not read file.");
         }
         
         
