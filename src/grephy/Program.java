@@ -18,10 +18,7 @@ public class Program {
         InputFile file = new InputFile(); // The File being read
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         
-        System.out.println("-----------------------------------\n"
-                + "~~~~~~~~WELCOME TO GREPHY!~~~~~~~~~\n"
-                + "-----------------------------------\n"
-                + "Enter a Regex to being:"); // Introduction
+        WelcomeGrephy(); // Displays the welcome sign
         String input = in.readLine();
         while(input != null) {
             // Ending the program
@@ -38,27 +35,21 @@ public class Program {
                     input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
                     break;
                 } else if(input.toLowerCase().contains("info")) { // Info about the program
-                    
+                    System.out.println("INFO TESTER\n");
                 } else if(input.toLowerCase().contains("rules")) { // Instructions on how to use program
-                    
-                } else if(input.toLowerCase().contains("regex")) { // Info on entering a regex
-                    
+                     
                 } else if(input.toLowerCase().contains("examples")) { // Info about the program
-                    
-                } else if(input.toLowerCase().contains("home")) { // Return to main screen
-                    
+                     
                 } else { // Error message incorrect input
                     HelpErrorMessage(); // Calls the error message for the help menu
-                    input = "help"; // Waits to recieve input from user
                 }
             } else {
                 MainErrorMessage(); // Displays error message for the main screen
-                input = in.readLine(); // Waits to recieve input from user
             }
             
-            //System.out.println("The input being tested: " + file.Input());
-        
-   
+            
+            WelcomeGrephy(); // Displays the welcome sign
+            input = in.readLine(); // Waits for user input
         }
     }
     
@@ -72,13 +63,11 @@ public class Program {
         System.out.println("\n-----------------------------------\n"
                     + "~~~~~~~~~~~[HELP MENU]~~~~~~~~~~~~~\n"
                     + "-----------------------------------\n"
-                + "Invalid \"help\" command typed.\n\n"
+                + "Invalid \"help\" command entered.\n\n"
                 + "List of commands:\n"
-                + "info     : Gives information about Grephy.\n"
-                + "rules    : Instructions on how to use Grephy.\n"
-                + "regex    : More details on entering a Regex.\n"
-                + "examples : Contains sample Regex Test Cases.\n"
-                + "home     : Return to main screen.");
+                + "info      : Gives information about Grephy.\n"
+                + "rules     : Instructions on how to use Grephy.\n"
+                + "examples  : Contains sample Regex Test Cases.\n");
     }
     
     
@@ -88,12 +77,22 @@ public class Program {
      * They provide descriptions with information about the commands
      */
     private void MainErrorMessage() {
-        System.out.println("~~~~ERROR DETECTED~~~~\n"
-                + "Invalid command typed.\n"
+        System.out.println("\n-----------------------------------\n" 
+                + "~~~~~~~~~[ERROR DETECTED]~~~~~~~~~~\n"
                 + "-----------------------------------\n"
+                + "Invalid command typed.\n\n"
                 + "List of commands:\n"
                 + "help : Takes you to the help menu.\n"
-                + "exit | end | quit | done : Ends the program.\n");
+                + "exit | end | quit | done : Ends the program.\n\n"
+                + "Hit enter/return to continue...");
+    }
+    
+    
+    private void WelcomeGrephy() {
+        System.out.println("\n-----------------------------------\n"
+                + "~~~~~~~~WELCOME TO GREPHY!~~~~~~~~~\n"
+                + "-----------------------------------\n"
+                + "Enter a Regex to being:"); // Introduction
     }
     
 }
