@@ -82,8 +82,9 @@ public class Program {
                 + "-----------------------------------\n"
                 + "Invalid command typed.\n\n"
                 + "List of commands:\n"
-                + "help : Takes you to the help menu.\n"
-                + "exit | end | quit | done : Ends the program.\n\n"
+                + "1                          : (ab)*\n"
+                + "help                       : Takes you to the help menu.\n"
+                + "exit | end | quit | done   : Ends the program.\n\n"
                 + "Hit enter/return to continue...");
     }
     
