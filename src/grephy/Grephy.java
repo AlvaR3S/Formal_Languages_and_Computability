@@ -18,7 +18,9 @@ public class Grephy {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        InputFile file = new InputFile();
-        file.learnInput(); 
+        InputFile regex = new InputFile();
+        System.out.println("Welcome to Grephy!\n"
+                + "The Regex we will be converting is: " + regex.Input());
+        
     }
 }
