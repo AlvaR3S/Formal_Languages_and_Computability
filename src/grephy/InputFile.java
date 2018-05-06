@@ -1,6 +1,6 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template input, choose Tools | Templates
  * and open the template in the editor.
  */
 
@@ -13,7 +13,7 @@ import java.io.*;
  * @author reynaldoalvarez
  */
 public class InputFile {
-    private String regex;
+    private String input;
     private int charCount = 0;
 
     public int getCharCount() {
@@ -24,19 +24,19 @@ public class InputFile {
     public void InputFile() {}
     
     public String Input() {
-        try (BufferedReader buffReader = new BufferedReader(new FileReader("InputFile.txt"))) { // Create the bufferedReader and take in an txt file
+        try (BufferedReader buffReader = new BufferedReader(new FileReader("InputFile.txt"))) { // Create the bufferedReader and take in an txt input
             while(buffReader.ready()) { // While there is still input left
                 
-                regex = buffReader.readLine();
+                input = buffReader.readLine();
                 
             }
         } catch(IOException e) {
             System.out.println("Could not read file.");
         }
-        for(int i = 0; i < regex.length(); i++) {
+        for(int i = 0; i < input.length(); i++) {
             charCount++;
         }
-        return regex;
+        return input;
     }
     
 }

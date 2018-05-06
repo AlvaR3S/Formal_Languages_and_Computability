@@ -11,15 +11,8 @@ import java.io.*;
  *
  * @author reynaldoalvarez
  */
-public class Grephy {
-    
-    public Grephy() {}
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws IOException {
-        Program Grephy = new Program();
-        Grephy.StartProgram();
+public class RegexToNFA {
+    public RegexToNFA() throws IOException {
+        
     }
 }
