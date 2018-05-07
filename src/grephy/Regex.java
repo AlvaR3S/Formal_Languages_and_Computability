@@ -14,10 +14,14 @@ import java.io.*;
  * @author reynaldoalvarez
  */
 public class Regex {
-    
-    public Regex()  {}
-    
     public TestCase regexCase;
+    public String string;
+    
+    
+    public Regex(TestCase regexCase, String string) {
+        this.regexCase = regexCase;
+        this.string = string;
+    }
     
     public static enum TestCase {
         // Regex Example 1
@@ -31,19 +35,32 @@ public class Regex {
         private TestCase(String pattern) {
             this.pattern = Pattern.compile(pattern);
         }
+        
     }
     
-    public void MatchedRegex() throws IOException {
+
+    public Regex() throws IOException {
         InputFile file = new InputFile(); // The File being read
         //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int matchedCount = 0;
         ArrayList<String> matchedString = new ArrayList<String>();
-        Matcher regexMatcher = regexCase.pattern.matcher(file.Input());
+        
+        StringBuilder regexBuffer = new StringBuilder();
+        for(TestCase regex: TestCase.values()) { // Loops through the Regex values and appends the format
+            regexBuffer.append(String.format("|(?<%s>%s)",regex.name(), regex.pattern));
+        }
+        // By using the String Builder we are able to grab the values from the enum class assign those cases to our Pattern in this class
+        Pattern regexPattern = Pattern.compile(regexBuffer.substring(1), Pattern.CASE_INSENSITIVE);
+         
+        Matcher regexMatcher = regexPattern.matcher(file.Input());
         
         System.out.println("The input file being read is: " + file.Input() + "\n");
         while(regexMatcher.find()) {
             if(regexMatcher.group(regexCase.regex1.name()) != null) {
-                matchedString.add(file.Input());
+                matchedString.add(regexMatcher.group(TestCase.regex1.name()));
+                if(!"".equals(regexCase.regex1.toString())) {
+                    matchedCount++;
+                }
             } else if(regexMatcher.group(regexCase.EOL.name()) != null) {
                 continue;
             } else {
@@ -51,13 +68,13 @@ public class Regex {
             }
         }
         
-        System.out.println("The selected Regex matched: " + matchedString.size() + " times.");
+        
+        System.out.println("The selected Regex matched: " + matchedCount + " times.");
         
         // CREATE arraylist to save matches found
         // Create Matcher and Pattern
         // Every time a match is found increment matchedCount
     }
-    
     
     //---------GETTERS-------------
     public TestCase getRegexCase() {

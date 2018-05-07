@@ -96,7 +96,8 @@ public class Program {
                     RegexToNFA convert = new RegexToNFA();                    
                 } else if(input.toLowerCase().contains("output")) { // Instructions on how to use program
                     Regex output = new Regex();
-                    output.MatchedRegex();
+                    WelcomeGrephy();
+                    input = in.readLine();
                 } else if(input.toLowerCase().contains("home")) { // Return to welcome screen
                     WelcomeGrephy();
                     input = in.readLine();
