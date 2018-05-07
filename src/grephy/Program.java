@@ -17,39 +17,90 @@ public class Program {
     public void StartProgram() throws IOException {
         InputFile file = new InputFile(); // The File being read
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        int helpCount = 0;
         
         WelcomeGrephy(); // Displays the welcome sign
         String input = in.readLine();
         while(input != null) {
+            
             // Ending the program
             if(input.toLowerCase().contains("exit") || input.toLowerCase().contains("quit") || 
-                    input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) {
+                input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) {
                 break;
+                
             } else if(input.toLowerCase().contains("help")) {
-                System.out.println("\n-----------------------------------\n"
-                    + "~~~~~~~~~~~[HELP MENU]~~~~~~~~~~~~~\n"
-                    + "-----------------------------------\n"
-                    + "How can I help you today?");
-                input = in.readLine();
-                if(input.toLowerCase().contains("exit") || input.toLowerCase().contains("quit") || 
-                    input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
-                    break;
-                } else if(input.toLowerCase().contains("info")) { // Info about the program
-                    System.out.println("INFO TESTER\n");
-                } else if(input.toLowerCase().contains("rules")) { // Instructions on how to use program
-                     
-                } else if(input.toLowerCase().contains("examples")) { // Info about the program
-                     
-                } else { // Error message incorrect input
-                    HelpErrorMessage(); // Calls the error message for the help menu
+                if(helpCount > 0) {
+                    input = in.readLine();
+                    if(input.toLowerCase().contains("exit") || input.toLowerCase().contains("quit") || 
+                        input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
+                        break;
+                        
+                    } else if(input.toLowerCase().contains("info")) { // Info about the program
+                        DisplayInfo();
+                        input = "help";
+                        
+                    } else if(input.toLowerCase().contains("rules")) { // Instructions on how to use program
+                        DisplayRules();
+                        input = "help";
+                        
+                    } else if(input.toLowerCase().contains("examples")) { // List of regex test cases
+                        DisplayExamples();
+                        input = "help";
+                        
+                    } else if(input.toLowerCase().contains("home")) { // Return to welcome screen
+                        helpCount--;
+                        WelcomeGrephy();
+                        input = in.readLine();
+                        
+                    } else { // Error message incorrect input
+                        HelpErrorMessage(); // Calls the error message for the help menu
+                        input = "help";
+                    }
+                } else {
+                    helpCount++;
+                    HelpMenu(); // Displays Help menu sign
+                    input = in.readLine();
+                    if(input.toLowerCase().contains("exit") || input.toLowerCase().contains("quit") || 
+                        input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
+                        break;
+                        
+                    } else if(input.toLowerCase().contains("info")) { // Info about the program
+                        DisplayInfo();
+                        input = "help";
+                        
+                    } else if(input.toLowerCase().contains("rules")) { // Instructions on how to use program
+                        DisplayRules();
+                        input = "help";
+                        
+                    } else if(input.toLowerCase().contains("examples")) { // List of regex test cases
+                        DisplayExamples();
+                        input = "help";
+                        
+                    } else if(input.toLowerCase().contains("home")) { // Return to welcome screen
+                        helpCount--;
+                        WelcomeGrephy();
+                        input = in.readLine();
+                        
+                    } else { // Error message incorrect input
+                        HelpErrorMessage(); // Calls the error message for the help menu
+                        input = "help";
+                    }
                 }
+            } else if(input.toLowerCase().contains("1")) {
+                ConvertOrOutput();
+                input = in.readLine();
+                if(true) {
+                    
+                }
+                // ( NOTE: CAN GET OUTPUT AT ANY STAGE )
+                // Going to say "Regex selected: (ab)*
+                // After say "Type convert to convert this regex to NFA
+                // After say type convert to convert this NFA to DFA
+                // FINALLY SAY type output to display standard output of our inputFIle
             } else {
                 MainErrorMessage(); // Displays error message for the main screen
+                input = in.readLine();
             }
-            
-            
-            WelcomeGrephy(); // Displays the welcome sign
-            input = in.readLine(); // Waits for user input
         }
     }
     
@@ -67,7 +118,8 @@ public class Program {
                 + "List of commands:\n"
                 + "info      : Gives information about Grephy.\n"
                 + "rules     : Instructions on how to use Grephy.\n"
-                + "examples  : Contains sample Regex Test Cases.\n");
+                + "examples  : Contains sample Regex Test Cases.\n\n"
+                + "Enter a command to continue...");
     }
     
     
@@ -85,15 +137,73 @@ public class Program {
                 + "1                          : (ab)*\n"
                 + "help                       : Takes you to the help menu.\n"
                 + "exit | end | quit | done   : Ends the program.\n\n"
-                + "Hit enter/return to continue...");
+                + "Enter a command to continue...");
     }
     
-    
+    /**
+     * Main screen. First Thing users see
+     */
     private void WelcomeGrephy() {
         System.out.println("\n-----------------------------------\n"
                 + "~~~~~~~~WELCOME TO GREPHY!~~~~~~~~~\n"
                 + "-----------------------------------\n"
-                + "Enter a Regex to being:"); // Introduction
+                + "Enter a command to begin:"); // Introduction
     }
     
+    
+    /**
+     * Help menu screen
+     */
+    private void HelpMenu() {
+        System.out.println("\n-----------------------------------\n"
+                + "~~~~~~~~~~~[HELP MENU]~~~~~~~~~~~~~\n"
+                + "-----------------------------------\n"
+                + "Enter a \"help\" command:");
+    }
+    
+    
+    /**
+     * Help menu screen
+     */
+    private void DisplayInfo() {
+        System.out.println("\n-----------------------------------\n"
+                + "~~~~~~~~~~[Grephy Info]~~~~~~~~~~~~\n"
+                + "-----------------------------------\n"
+                + "Info not yet available...\n\n"
+                + "Enter \"home\" to exit the Help Menu.");
+    }
+    
+    
+    /**
+     * Help menu screen
+     */
+    private void DisplayRules() {
+        System.out.println("\n-----------------------------------\n"
+                + "~~~~~~~~~~[Grephy Rules]~~~~~~~~~~~\n"
+                + "-----------------------------------\n"
+                + "Info not yet available...\n\n"
+                + "Enter \"home\" to exit the Help Menu.");
+    }
+    
+    /**
+     * Help menu screen
+     */
+    private void DisplayExamples() {
+        System.out.println("\n-----------------------------------\n"
+                + "~~~~~~~~~~[Grephy Cases]~~~~~~~~~~~\n"
+                + "-----------------------------------\n"
+                + "Info not yet available...\n\n"
+                + "Enter \"home\" to exit the Help Menu.");
+    }
+    
+    
+    /**
+     * Main screen. First Thing users see
+     */
+    private void ConvertOrOutput() {
+        System.out.println("\n-----------------------------------\n"
+                + "~~~~~~~~WELCOME TO GREPHY!~~~~~~~~~\n"
+                + "-----------------------------------\n"
+                + "Enter a Regex to begin:"); // Introduction
+    }
 }
