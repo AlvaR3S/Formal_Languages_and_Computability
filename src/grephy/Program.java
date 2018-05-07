@@ -86,14 +86,14 @@ public class Program {
                     }
                 }
             } else if(input.toLowerCase().contains("1")) {
-                System.out.println("\nYou selected Regex: (ab)*\n");
+                System.out.println("\nYou selected Regex: (a+b)*\n");
                 ConvertOrOutput();
                 input = in.readLine();
                 if(input.toLowerCase().contains("exit") || input.toLowerCase().contains("quit") || 
                     input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
                     break;
                 } else if(input.toLowerCase().contains("convert")) { // Info about the program
-                    RegexToNFA convert = new RegexToNFA();                    
+                   // RegexToNFA convert = new RegexToNFA();                    
                 } else if(input.toLowerCase().contains("output")) { // Instructions on how to use program
                     Regex output = new Regex();
                     WelcomeGrephy();
@@ -143,7 +143,7 @@ public class Program {
                 + "-----------------------------------\n"
                 + "Invalid command typed.\n\n"
                 + "List of commands:\n"
-                + "1                          : (ab)*\n"
+                + "1                          : (a+b)*\n"
                 + "help                       : Takes you to the help menu\n"
                 + "exit | end | quit | done   : Ends the program\n\n"
                 + "Enter a command to continue...");
@@ -178,7 +178,11 @@ public class Program {
         System.out.println("\n-----------------------------------\n"
                 + "~~~~~~~~~~[Grephy Info]~~~~~~~~~~~~\n"
                 + "-----------------------------------\n"
-                + "Info not yet available...\n\n"
+                + "Grephy is a version of the grep utility.\n"
+                + "This program searches files for regular expression pattern matches and produces dot graph file\n" 
+                + "output for the automata used in the matching computation.\n\n"
+                + "Grephy allows the user to decide wether they would like to convert their Regex into an NFA"
+                + "or their NFA into a DFA, before they begin the match process read from the input file.\n\n"
                 + "Enter \"home\" to exit the Help Menu.");
     }
     

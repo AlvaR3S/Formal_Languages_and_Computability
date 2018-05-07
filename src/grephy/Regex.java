@@ -23,8 +23,6 @@ public class Regex {
         this.string = group;
     }
 
- 
-    
     public static enum TestCase {
         // Regex Example 1
         regexOne("(a+b)*"),
@@ -43,9 +41,6 @@ public class Regex {
 
     public Regex() throws IOException {
         InputFile file = new InputFile(); // The File being read
-        //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        int matchedCount = 0;
-        
         
         StringBuilder regexBuffer = new StringBuilder();
         for(TestCase regex: TestCase.values()) { // Loops through the Regex values and appends the format
@@ -67,12 +62,7 @@ public class Regex {
             }
         }
         
-        
         System.out.println("The selected Regex matched: " + matchedString.size() + " times.");
-        
-        // CREATE arraylist to save matches found
-        // Create Matcher and Pattern
-        // Every time a match is found increment matchedCount
     }
     
     //---------GETTERS-------------
