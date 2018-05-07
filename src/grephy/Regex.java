@@ -16,16 +16,18 @@ import java.io.*;
 public class Regex {
     public TestCase regexCase;
     public String string;
+    public ArrayList<TestCase> matchedString = new ArrayList<TestCase>();
     
-    
-    public Regex(TestCase regexCase, String string) {
+    public Regex(TestCase regexCase, String group) {
         this.regexCase = regexCase;
-        this.string = string;
+        this.string = group;
     }
+
+ 
     
     public static enum TestCase {
         // Regex Example 1
-        regex1("(ab)*"),
+        regexOne("(a+b)*"),
         
         // End of the first line/program
         EOL("\n");
@@ -43,7 +45,7 @@ public class Regex {
         InputFile file = new InputFile(); // The File being read
         //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int matchedCount = 0;
-        ArrayList<String> matchedString = new ArrayList<String>();
+        
         
         StringBuilder regexBuffer = new StringBuilder();
         for(TestCase regex: TestCase.values()) { // Loops through the Regex values and appends the format
@@ -56,12 +58,9 @@ public class Regex {
         
         System.out.println("The input file being read is: " + file.Input() + "\n");
         while(regexMatcher.find()) {
-            if(regexMatcher.group(regexCase.regex1.name()) != null) {
-                matchedString.add(regexMatcher.group(TestCase.regex1.name()));
-                if(!"".equals(regexCase.regex1.toString())) {
-                    matchedCount++;
-                }
-            } else if(regexMatcher.group(regexCase.EOL.name()) != null) {
+            if(regexMatcher.group(TestCase.regexOne.name()) != null) {
+                matchedString.add(regexCase.regexOne);
+            } else if(regexMatcher.group(TestCase.EOL.name()) != null) {
                 continue;
             } else {
                 
@@ -69,7 +68,7 @@ public class Regex {
         }
         
         
-        System.out.println("The selected Regex matched: " + matchedCount + " times.");
+        System.out.println("The selected Regex matched: " + matchedString.size() + " times.");
         
         // CREATE arraylist to save matches found
         // Create Matcher and Pattern
