@@ -14,8 +14,7 @@ import java.io.*;
 public class Program {
     public Program() {}
     
-    public void StartProgram() throws IOException {
-        InputFile file = new InputFile(); // The File being read
+    public void StartProgram() throws IOException {        
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int helpCount = 0;
         
@@ -87,16 +86,24 @@ public class Program {
                     }
                 }
             } else if(input.toLowerCase().contains("1")) {
+                System.out.println("\nYou selected Regex: (ab)*\n");
                 ConvertOrOutput();
                 input = in.readLine();
-                if(true) {
-                    
+                if(input.toLowerCase().contains("exit") || input.toLowerCase().contains("quit") || 
+                    input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
+                    break;
+                } else if(input.toLowerCase().contains("convert")) { // Info about the program
+                    RegexToNFA convert = new RegexToNFA();                    
+                } else if(input.toLowerCase().contains("output")) { // Instructions on how to use program
+                    Regex output = new Regex();
+                    output.MatchedRegex();
+                } else if(input.toLowerCase().contains("home")) { // Return to welcome screen
+                    WelcomeGrephy();
+                    input = in.readLine();
+                } else { // Error message incorrect input
+                    InvalidCommand();
+                    input = "1";
                 }
-                // ( NOTE: CAN GET OUTPUT AT ANY STAGE )
-                // Going to say "Regex selected: (ab)*
-                // After say "Type convert to convert this regex to NFA
-                // After say type convert to convert this NFA to DFA
-                // FINALLY SAY type output to display standard output of our inputFIle
             } else {
                 MainErrorMessage(); // Displays error message for the main screen
                 input = in.readLine();
@@ -118,7 +125,8 @@ public class Program {
                 + "List of commands:\n"
                 + "info      : Gives information about Grephy.\n"
                 + "rules     : Instructions on how to use Grephy.\n"
-                + "examples  : Contains sample Regex Test Cases.\n\n"
+                + "examples  : Contains sample Regex Test Cases.\n"
+                + "home      : Return to the Welcome screen\n\n"
                 + "Enter a command to continue...");
     }
     
@@ -135,8 +143,8 @@ public class Program {
                 + "Invalid command typed.\n\n"
                 + "List of commands:\n"
                 + "1                          : (ab)*\n"
-                + "help                       : Takes you to the help menu.\n"
-                + "exit | end | quit | done   : Ends the program.\n\n"
+                + "help                       : Takes you to the help menu\n"
+                + "exit | end | quit | done   : Ends the program\n\n"
                 + "Enter a command to continue...");
     }
     
@@ -201,9 +209,19 @@ public class Program {
      * Main screen. First Thing users see
      */
     private void ConvertOrOutput() {
-        System.out.println("\n-----------------------------------\n"
-                + "~~~~~~~~WELCOME TO GREPHY!~~~~~~~~~\n"
-                + "-----------------------------------\n"
-                + "Enter a Regex to begin:"); // Introduction
+        System.out.println("List of commands:\n"
+                + "convert  : Execute a Regex to NFA conversion\n"
+                + "output   : Display the results\n"
+                + "home     : Return to the Welcome screen\n"
+                + "exit | end | quit | done   : Ends the program.\n\n" 
+                + "Enter a command to continue...");
     }
+    
+    /**
+     * User enters wrong command
+     */
+    private void InvalidCommand() {
+        System.out.println("Invalid command entered. Please try again.\n");
+    }
+    
 }

@@ -26,9 +26,7 @@ public class InputFile {
     public String Input() {
         try (BufferedReader buffReader = new BufferedReader(new FileReader("InputFile.txt"))) { // Create the bufferedReader and take in an txt input
             while(buffReader.ready()) { // While there is still input left
-                
                 input = buffReader.readLine();
-                
             }
         } catch(IOException e) {
             System.out.println("Could not read file.");
