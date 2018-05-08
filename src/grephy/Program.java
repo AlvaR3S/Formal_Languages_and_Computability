@@ -94,8 +94,8 @@ public class Program {
                     input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
                     break;
                 } else if(input.toLowerCase().contains("convert")) { // Info about the program
-                    
-                    RegexToNFA convert = new RegexToNFA();                    
+                    regexSelected = "(a+b)*";
+                    RegexToNFA convert = new RegexToNFA(regexSelected);                    
                 } else if(input.toLowerCase().contains("output")) { // Instructions on how to use program
                     Regex output = new Regex();
                     WelcomeGrephy();

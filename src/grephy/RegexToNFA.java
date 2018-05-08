@@ -26,8 +26,8 @@ public class RegexToNFA {
     
     public RegexToNFA(String regex) {
         
-        for(int i = 0; i < regEx.length(); i++) {
-            transitionSymbol = (char) i;
+        for(int i = 0; i < regex.length(); i++) {
+            transitionSymbol = regex.charAt(i);
             System.out.println(transitionSymbol);
         }  
     }
