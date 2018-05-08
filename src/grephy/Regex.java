@@ -35,6 +35,10 @@ public class Regex {
         private TestCase(String pattern) {
             this.pattern = Pattern.compile(pattern);
         }
+
+        public Pattern getPattern() {
+            return pattern;
+        }
         
     }
     
@@ -69,4 +73,6 @@ public class Regex {
     public TestCase getRegexCase() {
         return regexCase;
     }
+    
+    
 }

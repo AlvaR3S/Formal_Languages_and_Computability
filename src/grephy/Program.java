@@ -17,6 +17,7 @@ public class Program {
     public void StartProgram() throws IOException {        
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int helpCount = 0;
+        String regexSelected;
         
         WelcomeGrephy(); // Displays the welcome sign
         String input = in.readLine();
@@ -93,7 +94,8 @@ public class Program {
                     input.toLowerCase().contains("end") || input.toLowerCase().contains("done")) { // Ending the program
                     break;
                 } else if(input.toLowerCase().contains("convert")) { // Info about the program
-                   // RegexToNFA convert = new RegexToNFA();                    
+                    
+                    RegexToNFA convert = new RegexToNFA();                    
                 } else if(input.toLowerCase().contains("output")) { // Instructions on how to use program
                     Regex output = new Regex();
                     WelcomeGrephy();

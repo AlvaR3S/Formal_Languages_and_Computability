@@ -16,21 +16,19 @@ public class RegexToNFA {
     public char transitionSymbol;
     public TestCase regex;
     
+    //public RegexToNFA() {}
+    
     public RegexToNFA(int currentState, int nextState, char transitionSymbol) {
         this.currentState = currentState;
         this.nextState = nextState;
         this.transitionSymbol = transitionSymbol;
     }
     
-    public RegexToNFA(TestCase regex) {
-        this.regex = regex;
-        String regEx = regex.regexOne.name();
+    public RegexToNFA(String regex) {
+        
         for(int i = 0; i < regEx.length(); i++) {
             transitionSymbol = (char) i;
             System.out.println(transitionSymbol);
-        }
-        
+        }  
     }
-    
-    
 }
